@@ -1,18 +1,15 @@
 package com.example.demoo.controllers;
 
 import com.example.demoo.models.User;
-import com.example.demoo.repo.UserRepo;
 import com.example.demoo.services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import kong.unirest.core.HttpResponse;
-import kong.unirest.core.Unirest;
+import javafx.stage.Stage;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -29,33 +26,55 @@ public class LoginController {
 
     @Autowired
     private FXMLSceneManager sceneManager;
+    private Stage primaryStage;
 
-    public void login() {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-        User user = null;
-
-        try {
-            user = userService.getByUsernameAndPassword(username, password);
-            System.out.println("User: " + user); // Log the user object
-
-            if (user.getUserType().getId() == 1) {
-                System.out.println("Switching to admin scene...");
-                sceneManager.switchScene("/fxml/admin.fxml");  // Admin page
-            } else if (user.getUserType().getId() == 2) {
-                System.out.println("Switching to user scene...");
-                sceneManager.switchScene("/fxml/user.fxml");   // User page
-            }
-        } catch (Exception e) {
-            System.out.println("Ошибка соединения! " + username + " " + password);
-            e.printStackTrace(); // Print the exception
-        }
+    public void setPrimaryStage(Stage stage) {
+        this.primaryStage = stage;
+        sceneManager.setPrimaryStage(stage);
     }
 
+    public void login() {
+        String username = usernameField.getText().trim();
+        String password = passwordField.getText().trim();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            showAlert("Ошибка входа", "Поля не могут быть пустыми!", Alert.AlertType.ERROR);
+            return;
+        }
+
+        try {
+            User user = userService.getByUsername(username);
+
+            if (user == null) {
+                showAlert("Ошибка входа", "Пользователь не найден!", Alert.AlertType.ERROR);
+                return;
+            }
+
+            if (!user.getPassword().equals(password)) {
+                showAlert("Ошибка входа", "Неверный пароль!", Alert.AlertType.ERROR);
+                return;
+            }
+
+            if (user.getUserType().getId() == 1) {
+                sceneManager.switchScene("/fxml/admin.fxml");
+            } else if (user.getUserType().getId() == 2) {
+                sceneManager.switchScene("/fxml/user.fxml");
+            }
+        } catch (Exception e) {
+            showAlert("Ошибка", "Ошибка соединения с базой данных!", Alert.AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
 
     public void handleRegister(ActionEvent event) {
         sceneManager.switchScene("/fxml/register.fxml");
     }
+
+    private void showAlert(String title, String message, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
-
-
