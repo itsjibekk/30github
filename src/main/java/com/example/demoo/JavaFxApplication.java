@@ -1,5 +1,6 @@
 package com.example.demoo;
 
+import com.example.demoo.controllers.FXMLSceneManager;
 import com.example.demoo.controllers.LoginController;
 import com.example.demoo.controllers.TrackController;
 import javafx.application.Application;
@@ -35,11 +36,17 @@ public class JavaFxApplication extends Application {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+
+            // Получаем FXMLSceneManager и устанавливаем primaryStage
+            FXMLSceneManager sceneManager = applicationContext.getBean(FXMLSceneManager.class);
+            sceneManager.setPrimaryStage(stage);
+
         } catch (Exception e) {
             System.out.println("Error during application startup: " + e.getMessage());
             e.printStackTrace();
         }
     }
+
 
 
     @Override

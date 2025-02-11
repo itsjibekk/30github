@@ -12,6 +12,7 @@ import java.io.IOException;
 
 @Component
 public class FXMLSceneManager {
+
     @Setter
     private Stage primaryStage;
     private final ApplicationContext context;
@@ -21,24 +22,23 @@ public class FXMLSceneManager {
     }
 
     public void switchScene(String fxmlPath) {
+        if (primaryStage == null) {
+            System.out.println("Error: primaryStage is null!");
+            return; // Прерываем выполнение, если primaryStage не установлен
+        }
+
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setControllerFactory(context::getBean);
-            loader.setLocation(getClass().getResource("/fxml/login.fxml"));
+            loader.setLocation(getClass().getResource(fxmlPath));
             Parent root = loader.load();
             Scene scene = new Scene(root);
 
-            if (primaryStage == null) {
-                System.out.println("Error: primaryStage is null!");
-            } else {
-                primaryStage.setScene(scene);
-                primaryStage.show();
-            }
+            primaryStage.setScene(scene);
+            primaryStage.show();
         } catch (IOException e) {
-            e.printStackTrace(); // Print the exception stack trace
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
-
-
 }
