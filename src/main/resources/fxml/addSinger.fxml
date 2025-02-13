@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demoo.controllers.AddSingerController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="366.0" fitWidth="215.0" layoutX="32.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/608229b57bf9b5625065d8a28a944d5f.jpg" />
+               </image>
+            </ImageView>
+            <Label alignment="TOP_CENTER" layoutX="14.0" layoutY="166.0" prefHeight="25.0" prefWidth="251.0" style="-fx-background-color: #f6b2ff;" text="Добавить исполнителя">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="300.0" layoutY="118.0" prefHeight="17.0" prefWidth="85.0" text="Имя">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="singerName" layoutX="343.0" layoutY="115.0" prefHeight="26.0" prefWidth="198.0" />
+            <Button layoutX="456.0" layoutY="316.0" mnemonicParsing="false" onAction="#saveSinger" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #f6b2ff;" text="Сохранить" />
+            <Button fx:id="back" layoutX="366.0" layoutY="316.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #f6b2ff;" text="Назад" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
