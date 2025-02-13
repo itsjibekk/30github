@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demoo.controllers.AddGenreController">
+   <children>
+      <ImageView fitHeight="366.0" fitWidth="215.0" layoutX="32.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bdf5986d91e62a8fe5299eda8e571eeb.jpg" />
+         </image>
+      </ImageView>
+      <Label alignment="TOP_CENTER" layoutX="14.0" layoutY="203.0" prefHeight="25.0" prefWidth="251.0" style="-fx-background-color: #f6b2ff;" text="Добавить жанр">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="270.0" layoutY="118.0" prefHeight="17.0" prefWidth="85.0" text="Название">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="genreName" layoutX="343.0" layoutY="115.0" prefHeight="26.0" prefWidth="173.0" />
+      <Button fx:id="saveBtn" layoutX="333.0" layoutY="283.0" mnemonicParsing="false" onAction="#saveGenre" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #f6b2ff;" text="Сохранить" />
+      <Button fx:id="back" layoutX="430.0" layoutY="283.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #f6b2ff;" text="Назад" />
+   </children>
+</AnchorPane>

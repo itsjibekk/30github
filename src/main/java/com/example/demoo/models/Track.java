@@ -23,6 +23,8 @@ public class Track {
     @JoinColumn(name = "genre", nullable = false)
     private Genre genre;
 
+    private String link;
+
     public String getName() {
         return this.title;
     }
