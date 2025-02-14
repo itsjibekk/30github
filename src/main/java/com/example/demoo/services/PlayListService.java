@@ -15,4 +15,16 @@ public class PlayListService {
     public List<PlayList> loadAll() {
         return playListRepo.findAll();
     }
+
+    public void save(PlayList playListt) {
+        playListRepo.save(playListt);
+    }
+
+    public boolean existsByTitle(String title) {
+        return playListRepo.existsByTitle(title);
+    }
+
+    public void delete(PlayList pl) {
+        playListRepo.delete(pl);
+    }
 }

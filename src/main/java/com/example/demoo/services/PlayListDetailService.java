@@ -18,4 +18,12 @@ public class PlayListDetailService {
     public List<TrackDto> findByPlayList(PlayList pl) {
         return playListDetailRepo.findTrackDtosByPlayList(pl.getId());
     }
+
+    public void save(PlayListDetail pl) {
+        playListDetailRepo.save(pl);
+    }
+
+    public boolean existsByPlayListAndTrack(PlayList pl, Track track) {
+        return playListDetailRepo.existsByPlayListAndTrack(pl,track);
+    }
 }

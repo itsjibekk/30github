@@ -20,4 +20,8 @@ public class SingerService {
     public void save(Singer singer) {
         singerRepo.save(singer);
     }
+
+    public Singer findBySingerName(String singerName) {
+        return singerRepo.findBySingername(singerName);
+    }
 }
