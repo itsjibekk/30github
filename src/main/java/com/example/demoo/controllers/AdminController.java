@@ -2,7 +2,6 @@ package com.example.demoo.controllers;
 
 import com.example.demoo.dto.TrackDto;
 import com.example.demoo.models.PlayList;
-import com.example.demoo.models.PlayListDetail;
 import com.example.demoo.models.Track;
 import com.example.demoo.services.GenreService;
 import com.example.demoo.services.PlayListDetailService;

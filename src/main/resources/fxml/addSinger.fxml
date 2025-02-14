@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demoo.controllers.AddSingerController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -30,8 +29,8 @@
                </font>
             </Label>
             <TextField fx:id="singerName" layoutX="343.0" layoutY="115.0" prefHeight="26.0" prefWidth="198.0" />
-            <Button layoutX="456.0" layoutY="316.0" mnemonicParsing="false" onAction="#saveSinger" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #f6b2ff;" text="Сохранить" />
-            <Button fx:id="back" layoutX="366.0" layoutY="316.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #f6b2ff;" text="Назад" />
+            <Button layoutX="456.0" layoutY="316.0" mnemonicParsing="false" onAction="#saveSinger" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Сохранить" />
+            <Button fx:id="back" layoutX="366.0" layoutY="316.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Назад" />
          </children>
       </AnchorPane>
    </children>

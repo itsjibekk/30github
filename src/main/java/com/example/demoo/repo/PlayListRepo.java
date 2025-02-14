@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PlayListRepo extends JpaRepository<PlayList, Long> {
+    boolean existsByTitle(String title);
 }

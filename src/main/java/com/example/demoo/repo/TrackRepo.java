@@ -12,4 +12,5 @@ import java.util.List;
 public interface TrackRepo extends JpaRepository<Track, Long> {
 
     List<Track> findByTitleAndSinger(String title, Singer singer);
+
 }
