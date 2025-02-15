@@ -12,7 +12,7 @@ public interface UserRepo extends JpaRepository<User,Long> {
 
     boolean existsByUsername(String username);
 
-    Optional<User> findByUsername(String username);
+    User findByUsername(String username);
 
     @Query(value = "SELECT * FROM users WHERE username = :username and password = :password", nativeQuery = true)
     Optional<User> getByUsernameAndPassword(@Param("username") String username, @Param("password") String password);

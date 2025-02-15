@@ -5,6 +5,7 @@ import com.example.demoo.models.PlayList;
 import com.example.demoo.models.PlayListDetail;
 import com.example.demoo.models.Track;
 import com.example.demoo.repo.PlayListDetailRepo;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +26,10 @@ public class PlayListDetailService {
 
     public boolean existsByPlayListAndTrack(PlayList pl, Track track) {
         return playListDetailRepo.existsByPlayListAndTrack(pl,track);
+    }
+
+    @Transactional
+    public void delete(Track track,PlayList pl) {
+        playListDetailRepo.deleteByTrackAndPlayList(track, pl);
     }
 }

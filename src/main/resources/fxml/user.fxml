@@ -1,12 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demoo.controllers.UserController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demoo.controllers.UserController">
    <children>
-      <Label layoutX="232.0" layoutY="26.0" prefHeight="17.0" prefWidth="153.0" text="Привет, пользователь" />
-      <Button fx:id="back" layoutX="493.0" layoutY="352.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="81.0" text="Back" />
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f6b2ff" height="600.0" stroke="#f6b2ff" strokeType="INSIDE" width="259.0" />
+            <Label layoutX="27.0" layoutY="37.0" prefHeight="39.0" prefWidth="95.0" text="Привет,">
+               <font>
+                  <Font name="Futura Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="120.0" layoutY="37.0" prefHeight="37.0" prefWidth="138.0" text="Жибек">
+               <font>
+                  <Font name="Futura Bold" size="21.0" />
+               </font>
+            </Label>
+            <Button layoutY="159.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Треки" textFill="WHITE">
+               <font>
+                  <Font name="Futura Bold" size="21.0" />
+               </font>
+            </Button>
+            <Button layoutY="287.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Плейлисты" textFill="WHITE">
+               <font>
+                  <Font name="Futura Bold" size="21.0" />
+               </font>
+            </Button>
+            <Button layoutY="351.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Аккаунт" textFill="WHITE">
+               <font>
+                  <Font name="Futura Bold" size="21.0" />
+               </font>
+            </Button>
+            <Button layoutY="223.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Артисты" textFill="WHITE">
+               <font>
+                  <Font name="Futura Bold" size="21.0" />
+               </font>
+            </Button>
+            <TextField layoutX="641.0" layoutY="25.0" prefHeight="26.0" prefWidth="188.0" promptText="Поиск" />
+            <ChoiceBox layoutX="536.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="100.0" />
+            <Button layoutX="832.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="59.0" text="ок" />
+            <AnchorPane fx:id="tracks" layoutX="267.0" layoutY="61.0" prefHeight="531.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;">
+               <children>
+                  <TableView layoutX="28.0" layoutY="18.0" prefHeight="417.0" prefWidth="563.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="artists" layoutX="277.0" layoutY="71.0" prefHeight="531.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;" visible="false" />
+            <AnchorPane fx:id="playlists" layoutX="277.0" layoutY="71.0" prefHeight="531.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;" visible="false" />
+            <AnchorPane fx:id="account" layoutX="277.0" layoutY="71.0" prefHeight="531.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;" visible="false" />
+            <Button fx:id="logout" layoutY="415.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Выйти" textFill="WHITE">
+               <font>
+                  <Font name="Futura Bold" size="21.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

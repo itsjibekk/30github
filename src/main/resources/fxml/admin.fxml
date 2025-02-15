@@ -44,15 +44,18 @@
                      </font>
                   </Label>
                   <ChoiceBox fx:id="playListChoicebox" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="240.0" />
-                  <Button fx:id="updatePlayList" layoutX="20.0" layoutY="100.0" mnemonicParsing="false" onAction="#updatePlayList" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Изменить" />
-                  <Button fx:id="deletePlayList" layoutX="20.0" layoutY="170.0" mnemonicParsing="false" onAction="#deletePlayList" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Удалить" />
-                  <Button fx:id="addPlayList" layoutX="20.0" layoutY="240.0" mnemonicParsing="false" onAction="#addPlayList" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Добавить" />
+                  <Button fx:id="addPlayList" layoutX="20.0" layoutY="242.0" mnemonicParsing="false" onAction="#addPlayList" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Управление плейлистами" />
                   <TableView fx:id="playListTableView" layoutX="254.0" layoutY="8.0" prefHeight="284.0" prefWidth="302.0">
                     <columns>
                       <TableColumn fx:id="singer" prefWidth="117.18072509765625" text="Исполнитель" />
                       <TableColumn fx:id="title" prefWidth="183.50003051757812" text="Трек" />
                     </columns>
                   </TableView>
+                  <ImageView fitHeight="156.0" fitWidth="161.0" layoutX="41.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/7497e78a970a8b87559f9a74dfe046bb.jpg" />
+                     </image>
+                  </ImageView>
                </children></AnchorPane>
             <AnchorPane layoutX="601.0" layoutY="284.0" prefHeight="310.0" prefWidth="379.0" style="-fx-background-color: #ffff; -fx-border-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0,  5), 10, 0, 0, 1); -fx-background-radius: 10;">
                <children>
