@@ -133,10 +133,6 @@ public class AdminController implements Initializable {
         sceneManager.switchScene("/fxml/addTrack.fxml");
     }
 
-    @FXML
-    void deletePlayList(ActionEvent event) {
-
-    }
 
     @FXML
     void deleteTrack(ActionEvent event) {
@@ -146,13 +142,9 @@ public class AdminController implements Initializable {
 
     @FXML
     void manageAccount(ActionEvent event) {
-
+        sceneManager.switchScene("/fxml/manageAccount.fxml");
     }
 
-    @FXML
-    void updatePlayList(ActionEvent event) {
-
-    }
 
     @FXML
     void updateTrack(ActionEvent event) {
@@ -192,6 +184,7 @@ public class AdminController implements Initializable {
         playListChoicebox.setConverter(new StringConverter<PlayList>() {
             @Override
             public String toString(PlayList playList) {
+
                 return playList != null ? playList.getTitle() : "";
             }
 

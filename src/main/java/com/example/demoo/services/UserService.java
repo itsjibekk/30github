@@ -9,6 +9,8 @@ import com.example.demoo.repo.UserTypeRepo;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Data
 public class UserService  {
@@ -21,7 +23,7 @@ public class UserService  {
     }
 
     public User findByUsername(String username) {
-        return userRepo.findByUsername(username).orElseThrow();
+        return userRepo.findByUsername(username);
     }
 
     public void registerUser(String login, String password) {
@@ -47,6 +49,18 @@ public class UserService  {
     }
 
     public User getByUsername(String username) {
-        return userRepo.findByUsername(username).orElseThrow();
+        return userRepo.findByUsername(username);
+    }
+
+    public List<User> findAll() {
+       return userRepo.findAll();
+    }
+
+    public void delete(User user) {
+        userRepo.delete(user);
+    }
+
+    public void save(User user) {
+        userRepo.save(user);
     }
 }

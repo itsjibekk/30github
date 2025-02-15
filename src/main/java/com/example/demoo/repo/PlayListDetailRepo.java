@@ -24,4 +24,6 @@ public interface PlayListDetailRepo extends JpaRepository<PlayListDetail, Long> 
     List<TrackDto> findTrackDtosByPlayList(@Param("id") Long id);
 
     boolean existsByPlayListAndTrack(PlayList pl, Track track);
+
+    void deleteByTrackAndPlayList(Track track, PlayList pl);
 }

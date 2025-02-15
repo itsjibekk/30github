@@ -197,7 +197,7 @@ public class AddPlayListController implements Initializable {
         PlayList pl = playListTableView.getSelectionModel().getSelectedItem();
         TrackDto trackDto =  tracksTableView.getSelectionModel().getSelectedItem();
         Track track = trackService.findByTitleAndSinger(trackDto.getTitle(), singerService.findBySingerName((trackDto.getSingerName()))).get(0);
-        trackService.delete(track);
+        playListDetailService.delete(track,pl);
         tracksTableView.setItems(FXCollections.observableArrayList(playListDetailService.findByPlayList(pl)));
 
     }
