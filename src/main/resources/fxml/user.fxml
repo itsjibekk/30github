@@ -26,22 +26,22 @@
                   <Font name="Futura Bold" size="21.0" />
                </font>
             </Label>
-            <Button layoutY="159.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Треки" textFill="WHITE">
+            <Button layoutY="146.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Треки" textFill="WHITE">
                <font>
                   <Font name="Futura Bold" size="21.0" />
                </font>
             </Button>
-            <Button layoutY="287.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Плейлисты" textFill="WHITE">
+            <Button layoutY="290.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Плейлисты" textFill="WHITE">
                <font>
                   <Font name="Futura Bold" size="21.0" />
                </font>
             </Button>
-            <Button layoutY="351.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Аккаунт" textFill="WHITE">
+            <Button layoutY="363.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Аккаунт" textFill="WHITE">
                <font>
                   <Font name="Futura Bold" size="21.0" />
                </font>
             </Button>
-            <Button layoutY="223.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Артисты" textFill="WHITE">
+            <Button layoutY="218.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Артисты" textFill="WHITE">
                <font>
                   <Font name="Futura Bold" size="21.0" />
                </font>
@@ -62,7 +62,7 @@
             <AnchorPane fx:id="artists" layoutX="277.0" layoutY="71.0" prefHeight="531.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;" visible="false" />
             <AnchorPane fx:id="playlists" layoutX="277.0" layoutY="71.0" prefHeight="531.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;" visible="false" />
             <AnchorPane fx:id="account" layoutX="277.0" layoutY="71.0" prefHeight="531.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;" visible="false" />
-            <Button fx:id="logout" layoutY="415.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Выйти" textFill="WHITE">
+            <Button fx:id="logout" layoutY="433.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Выйти" textFill="WHITE">
                <font>
                   <Font name="Futura Bold" size="21.0" />
                </font>
