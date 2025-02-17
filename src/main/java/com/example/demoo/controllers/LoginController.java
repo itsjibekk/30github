@@ -58,7 +58,9 @@ public class LoginController {
             if (user.getUserType().getId() == 1) {
                 sceneManager.switchScene("/fxml/admin.fxml");
             } else if (user.getUserType().getId() == 2) {
-                sceneManager.switchScene("/fxml/user.fxml");
+                sceneManager.switchSceneWithController("/fxml/user.fxml", UserController.class,controller -> {
+                    controller.settUser(user);
+                });
             }
         } catch (Exception e) {
             showAlert("Ошибка", "Ошибка соединения с базой данных!", Alert.AlertType.ERROR);

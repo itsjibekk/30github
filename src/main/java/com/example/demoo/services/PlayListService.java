@@ -2,6 +2,7 @@ package com.example.demoo.services;
 
 import com.example.demoo.models.PlayList;
 import com.example.demoo.models.PlayListDetail;
+import com.example.demoo.models.User;
 import com.example.demoo.repo.PlayListRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,9 @@ public class PlayListService {
 
     public void delete(PlayList pl) {
         playListRepo.delete(pl);
+    }
+
+    public List<PlayList> findByUser(User user) {
+        return playListRepo.findByUserId(user.getId());
     }
 }

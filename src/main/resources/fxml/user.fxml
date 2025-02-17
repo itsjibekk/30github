@@ -6,6 +6,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -21,48 +23,90 @@
                   <Font name="Futura Bold" size="21.0" />
                </font>
             </Label>
-            <Label layoutX="120.0" layoutY="37.0" prefHeight="37.0" prefWidth="138.0" text="Жибек">
+            <Label fx:id="adminName" layoutX="120.0" layoutY="37.0" prefHeight="37.0" prefWidth="138.0" text="Жибек">
                <font>
                   <Font name="Futura Bold" size="21.0" />
                </font>
             </Label>
-            <Button layoutY="146.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Треки" textFill="WHITE">
+            <Button fx:id="trackButton" layoutY="146.0" mnemonicParsing="false" onAction="#showTracks" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Треки" textFill="WHITE">
                <font>
                   <Font name="Futura Bold" size="21.0" />
                </font>
             </Button>
-            <Button layoutY="290.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Плейлисты" textFill="WHITE">
+            <Button fx:id="playlistButton" layoutY="290.0" mnemonicParsing="false" onAction="#showPlaylists" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Плейлисты" textFill="WHITE">
                <font>
                   <Font name="Futura Bold" size="21.0" />
                </font>
             </Button>
-            <Button layoutY="363.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Аккаунт" textFill="WHITE">
+            <Button fx:id="accountButton" layoutY="363.0" mnemonicParsing="false" onAction="#showAccount" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Аккаунт" textFill="WHITE">
                <font>
                   <Font name="Futura Bold" size="21.0" />
                </font>
             </Button>
-            <Button layoutY="218.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Артисты" textFill="WHITE">
+            <Button fx:id="artistsButton" layoutY="218.0" mnemonicParsing="false" onAction="#showArtists" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Артисты" textFill="WHITE">
                <font>
                   <Font name="Futura Bold" size="21.0" />
                </font>
             </Button>
-            <TextField layoutX="641.0" layoutY="25.0" prefHeight="26.0" prefWidth="188.0" promptText="Поиск" />
-            <ChoiceBox layoutX="536.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="100.0" />
-            <Button layoutX="832.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="59.0" text="ок" />
-            <AnchorPane fx:id="tracks" layoutX="267.0" layoutY="61.0" prefHeight="531.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;">
+            <AnchorPane fx:id="tracks" layoutX="269.0" layoutY="7.0" prefHeight="588.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;" visible="false">
                <children>
-                  <TableView layoutX="28.0" layoutY="18.0" prefHeight="417.0" prefWidth="563.0">
+                  <TableView fx:id="tracksTB" layoutX="38.0" layoutY="54.0" prefHeight="467.0" prefWidth="563.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                      <TableColumn fx:id="trackName" prefWidth="98.37527465820312" text="Трек" />
+                      <TableColumn fx:id="singerName" prefWidth="169.25015258789062" text="Исполнитель" />
+                        <TableColumn fx:id="genreName" prefWidth="120.24993896484375" text="Жанр" />
+                        <TableColumn fx:id="action" prefWidth="174.74993896484375" text="Action" />
                     </columns>
                   </TableView>
+                  <Button fx:id="addTrack" layoutX="480.0" layoutY="532.0" mnemonicParsing="false" onAction="#addTrack" prefHeight="28.0" prefWidth="112.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Добавить" />
+                  <Button fx:id="updateTrack" layoutX="359.0" layoutY="532.0" mnemonicParsing="false" onAction="#updateTrack" prefHeight="28.0" prefWidth="112.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Изменить" />
+                  <TextField fx:id="searchField" layoutX="345.0" layoutY="15.0" prefHeight="26.0" prefWidth="255.0" promptText="Поиск" />
+                  <ChoiceBox fx:id="choiceBox" layoutX="240.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="100.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="artists" layoutX="277.0" layoutY="71.0" prefHeight="531.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;" visible="false" />
-            <AnchorPane fx:id="playlists" layoutX="277.0" layoutY="71.0" prefHeight="531.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;" visible="false" />
-            <AnchorPane fx:id="account" layoutX="277.0" layoutY="71.0" prefHeight="531.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;" visible="false" />
-            <Button fx:id="logout" layoutY="433.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Выйти" textFill="WHITE">
+            <AnchorPane fx:id="artists" layoutX="269.0" layoutY="6.0" prefHeight="588.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;" visible="false">
+               <children>
+                  <TextField fx:id="searchFieldA" layoutX="356.0" layoutY="14.0" prefHeight="26.0" prefWidth="237.0" promptText="Поиск" />
+                  <TableView fx:id="artistsTB" layoutX="32.0" layoutY="57.0" prefHeight="488.0" prefWidth="563.0">
+                     <columns>
+                        <TableColumn fx:id="singer" prefWidth="562.0000305175781" text="Исполнитель" />
+                     </columns>
+                  </TableView>
+               </children></AnchorPane>
+            <AnchorPane fx:id="playlists" layoutX="269.0" layoutY="7.0" prefHeight="588.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;" visible="false">
+               <children>
+                  <TableView fx:id="tracksInPL" layoutX="341.0" layoutY="81.0" prefHeight="310.0" prefWidth="270.0">
+                    <columns>
+                      <TableColumn fx:id="trackPL" prefWidth="75.0" text="Трек" />
+                      <TableColumn fx:id="singerPL" prefWidth="95.0" text="Исполнитель" />
+                        <TableColumn fx:id="genrePL" prefWidth="99.0" text="Жанр" />
+                    </columns>
+                  </TableView>
+                  <TableView fx:id="playlistsTB" layoutX="18.0" layoutY="81.0" prefHeight="310.0" prefWidth="237.0">
+                    <columns>
+                      <TableColumn fx:id="playListC" prefWidth="236.0" text="Плейлист" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="53.0" layoutY="30.0" prefHeight="39.0" prefWidth="212.0" text="Мои плейлисты">
+                     <font>
+                        <Font name="Futura Bold" size="21.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="showTracks" layoutX="275.0" layoutY="224.0" mnemonicParsing="false" onAction="#showTrackss" prefHeight="26.0" prefWidth="47.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="=&gt;" />
+                  <Button fx:id="addPlaylist" layoutX="498.0" layoutY="502.0" mnemonicParsing="false" onAction="#addPlaylist" prefHeight="28.0" prefWidth="112.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Добавить" />
+                  <Button fx:id="updatePlaylist" layoutX="375.0" layoutY="502.0" mnemonicParsing="false" onAction="#updatePlaylist" prefHeight="28.0" prefWidth="112.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Изменить" />
+               </children></AnchorPane>
+            <AnchorPane fx:id="account" layoutX="269.0" layoutY="7.0" prefHeight="588.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;">
+               <children>
+                  <ImageView fitHeight="192.0" fitWidth="176.0" layoutX="54.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/8dd468603051f04ed6f43e2b0de28490.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="358.0" layoutY="101.0" prefHeight="26.0" prefWidth="100.0" text="Username:" />
+                  <Label layoutX="357.0" layoutY="151.0" prefHeight="26.0" prefWidth="100.0" text="Username:" />
+               </children></AnchorPane>
+            <Button fx:id="logout" layoutY="433.0" mnemonicParsing="false" onAction="#goBack" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Выйти" textFill="WHITE">
                <font>
                   <Font name="Futura Bold" size="21.0" />
                </font>
