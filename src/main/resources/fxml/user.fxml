@@ -38,11 +38,6 @@
                   <Font name="Futura Bold" size="21.0" />
                </font>
             </Button>
-            <Button fx:id="accountButton" layoutY="363.0" mnemonicParsing="false" onAction="#showAccount" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Аккаунт" textFill="WHITE">
-               <font>
-                  <Font name="Futura Bold" size="21.0" />
-               </font>
-            </Button>
             <Button fx:id="artistsButton" layoutY="218.0" mnemonicParsing="false" onAction="#showArtists" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Артисты" textFill="WHITE">
                <font>
                   <Font name="Futura Bold" size="21.0" />
@@ -106,7 +101,7 @@
                   <Label layoutX="358.0" layoutY="101.0" prefHeight="26.0" prefWidth="100.0" text="Username:" />
                   <Label layoutX="357.0" layoutY="151.0" prefHeight="26.0" prefWidth="100.0" text="Username:" />
                </children></AnchorPane>
-            <Button fx:id="logout" layoutY="433.0" mnemonicParsing="false" onAction="#goBack" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Выйти" textFill="WHITE">
+            <Button fx:id="logout" layoutY="366.0" mnemonicParsing="false" onAction="#goBack" prefHeight="64.0" prefWidth="259.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Выйти" textFill="WHITE">
                <font>
                   <Font name="Futura Bold" size="21.0" />
                </font>
