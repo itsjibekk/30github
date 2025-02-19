@@ -38,9 +38,6 @@ public class UserController implements Initializable{
     private Button back;
 
     @FXML
-    private AnchorPane account;
-
-    @FXML
     private Button accountButton;
 
     @FXML
@@ -160,17 +157,11 @@ public class UserController implements Initializable{
 
 
     private void showPane(AnchorPane paneToShow) {
-        account.setVisible(false);
         artists.setVisible(false);
         playlists.setVisible(false);
         tracks.setVisible(false);
 
         paneToShow.setVisible(true);
-    }
-
-    @FXML
-    void showAccount(ActionEvent event) {
-        showPane(account);
     }
 
     @FXML
@@ -266,7 +257,9 @@ public class UserController implements Initializable{
 
     @FXML
     public void addPlaylist(){
-
+        fxmlSceneManager.switchSceneWithController("/fxml/addPlayListUser.fxml", AddPlayListUserController.class, controller -> {
+            controller.settUser(user);
+        });
     }
     @FXML
     public void showTrackss(){
