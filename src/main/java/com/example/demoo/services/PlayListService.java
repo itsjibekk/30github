@@ -30,6 +30,10 @@ public class PlayListService {
     }
 
     public List<PlayList> findByUser(User user) {
+        if (user == null) {
+            throw new IllegalArgumentException("User cannot be null");
+        }
         return playListRepo.findByUserId(user.getId());
     }
+
 }
