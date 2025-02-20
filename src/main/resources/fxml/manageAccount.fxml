@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demoo.controllers.ManageAccountController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
@@ -32,6 +31,11 @@
                </font>
             </Button>
             <Button fx:id="addUser" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="576.0" layoutY="534.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#addUser" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Добавить" textAlignment="CENTER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="showPlayList" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="383.0" layoutY="534.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showPlaylist" prefHeight="30.0" prefWidth="183.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Посмотреть плейлисты" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>

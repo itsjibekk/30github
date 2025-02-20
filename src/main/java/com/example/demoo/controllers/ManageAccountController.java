@@ -20,6 +20,8 @@ import org.springframework.stereotype.Component;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.example.demoo.controllers.AddPlayListUserController.user;
+
 @Component
 @FxmlView("/fxml/manageAccount.fxml")
 public class ManageAccountController implements Initializable {
@@ -100,26 +102,35 @@ public class ManageAccountController implements Initializable {
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    setGraphic(new HBox(10, updateButton, deleteButton)); // Расстояние между кнопками - 10px
+                    setGraphic(new HBox(10, updateButton, deleteButton));
                 }
             }
         });
 
         usersTableView.setItems(FXCollections.observableArrayList(userService.findAll()));
     }
-
-    // Метод для обновления пользователя
     private void updateUser(User user) {
         System.out.println("Обновление пользователя: " + user.getUsername());
         sceneManager.switchSceneWithController("/fxml/updateUser.fxml", UpdateUserController.class, controller -> {
             controller.setUser(user);
-        });// Переключение на сцену обновления
+        });
     }
 
-    // Метод для удаления пользователя
+    @FXML
+    public void showPlaylist(){
+        User selectedUser = usersTableView.getSelectionModel().getSelectedItem();
+        if (selectedUser != null) {
+            sceneManager.switchSceneWithController("/fxml/showPlaylistUser.fxml", ShowPlayListUserController.class, controller -> {
+                controller.settUser(selectedUser);
+            });
+        } else {
+            System.out.println("Ошибка: пользователь не выбран!");
+        }
+    }
+
     private void deleteUser(User user) {
-        userService.delete(user); // Удаление пользователя через сервис
-        usersTableView.getItems().remove(user); // Удаляем пользователя из таблицы
+        userService.delete(user);
+        usersTableView.getItems().remove(user);
         System.out.println("Удален пользователь: " + user.getUsername());
     }
 }
