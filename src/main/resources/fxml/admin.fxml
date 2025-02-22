@@ -16,7 +16,7 @@
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0">
          <children>
-            <Label layoutX="24.0" layoutY="16.0" prefHeight="17.0" prefWidth="126.0" text="Привет,Админ">
+            <Label layoutX="39.0" layoutY="11.0" prefHeight="23.0" prefWidth="70.0" text="Привет,">
                <font>
                   <Font size="18.0" />
                </font></Label>
@@ -80,6 +80,11 @@
                   <Font size="11.0" />
                </font>
             </Button>
+            <Label fx:id="adminName" layoutX="109.0" layoutY="11.0" prefHeight="23.0" prefWidth="122.0" text="User">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

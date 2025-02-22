@@ -56,7 +56,9 @@ public class LoginController {
             }
 
             if (user.getUserType().getId() == 1) {
-                sceneManager.switchScene("/fxml/admin.fxml");
+                sceneManager.switchSceneWithController("/fxml/admin.fxml", AdminController.class, controller -> {
+                    controller.settUser(user);
+                });
             } else if (user.getUserType().getId() == 2) {
                 sceneManager.switchSceneWithController("/fxml/user.fxml", UserController.class,controller -> {
                     controller.settUser(user);
