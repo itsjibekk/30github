@@ -3,6 +3,7 @@ package com.example.demoo.controllers;
 import com.example.demoo.dto.TrackDto;
 import com.example.demoo.models.PlayList;
 import com.example.demoo.models.Track;
+import com.example.demoo.models.User;
 import com.example.demoo.services.GenreService;
 import com.example.demoo.services.PlayListDetailService;
 import com.example.demoo.services.PlayListService;
@@ -100,6 +101,9 @@ public class AdminController implements Initializable {
 
     @FXML
     private Icon stopMusicBtn;
+    @FXML
+    private Label adminName;
+    public User user;
 
     @FXML
     public void playMusic(ActionEvent actionEvent) {
@@ -164,6 +168,7 @@ public class AdminController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         trackId.setCellValueFactory(cellData ->
                 new ReadOnlyObjectWrapper<>(cellData.getValue().getId()));
 
@@ -207,4 +212,8 @@ public class AdminController implements Initializable {
     }
 
 
+    public void settUser(User user) {
+        this.user = user;
+        adminName.setText(user.getUsername());
+    }
 }
