@@ -66,21 +66,21 @@
                      </image>
                   </ImageView>
                </children></AnchorPane>
-            <Button fx:id="back" layoutX="913.0" layoutY="5.0" mnemonicParsing="false" onAction="#goBack" prefHeight="35.0" prefWidth="70.0" styleClass="glow-button" stylesheets="@../css/styles.css" text="Назад">
+            <Button fx:id="back" layoutX="911.0" layoutY="5.0" mnemonicParsing="false" onAction="#goBack" prefHeight="35.0" prefWidth="70.0" styleClass="glow-button" stylesheets="@../css/styles.css" text="Назад">
                <font>
                   <Font size="11.0" />
                </font></Button>
-            <Button fx:id="play" layoutX="840.0" layoutY="5.0" mnemonicParsing="false" onAction="#playMusic" prefHeight="35.0" prefWidth="70.0" style="-fx-border-color: #f6b2ff; -fx-background-color: #ffff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Play">
+            <Button fx:id="play" layoutX="668.0" layoutY="5.0" mnemonicParsing="false" onAction="#playMusic" prefHeight="35.0" prefWidth="70.0" style="-fx-border-color: #f6b2ff; -fx-background-color: #ffff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Play">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="stop" layoutX="767.0" layoutY="5.0" mnemonicParsing="false" onAction="#stopMusic" prefHeight="35.0" prefWidth="70.0" style="-fx-background-color: #ffff; -fx-border-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Stop">
+            <Button fx:id="stop" layoutX="595.0" layoutY="5.0" mnemonicParsing="false" onAction="#stopMusic" prefHeight="35.0" prefWidth="70.0" style="-fx-background-color: #ffff; -fx-border-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Stop">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Label fx:id="adminName" layoutX="109.0" layoutY="11.0" prefHeight="23.0" prefWidth="122.0" text="User">
+            <Label fx:id="adminName" layoutX="116.0" layoutY="11.0" prefHeight="23.0" prefWidth="122.0" text="User">
                <font>
                   <Font size="18.0" />
                </font>
