@@ -211,7 +211,6 @@ public class AdminController implements Initializable {
         });
     }
 
-
     public void settUser(User user) {
         this.user = user;
         adminName.setText(user.getUsername());
