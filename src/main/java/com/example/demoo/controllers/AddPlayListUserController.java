@@ -89,18 +89,20 @@ public class AddPlayListUserController implements Initializable {
     @Autowired
     private GenreService genreService;
 
-    public static User user;
+    public  User user;
+    @Autowired
+    private UserSession userSession; // Получаем доступ к сессии
 
     @FXML
     void goBack(ActionEvent event) {
         sceneManager.switchSceneWithController("/fxml/user.fxml", UserController.class, controller -> {
-            controller.settUser(user);
+            controller.settUser(userSession.getUser());
         });
     }
 
     @FXML
     void showPlayList(ActionEvent event) {
-        playListTableView.setItems(FXCollections.observableArrayList(playListService.findByUser(gettUser())));
+        playListTableView.setItems(FXCollections.observableArrayList(playListService.findByUser(userSession.getUser())));
     }
 
     @FXML
@@ -108,7 +110,6 @@ public class AddPlayListUserController implements Initializable {
         PlayList pl = playListTableView.getSelectionModel().getSelectedItem();
         idTrack.setCellValueFactory(cellData ->
                 new ReadOnlyObjectWrapper<>(cellData.getValue().getId()));
-
         trackGenre.setCellValueFactory(cellData ->
                 new ReadOnlyStringWrapper(cellData.getValue().getGenre()));
         trackName.setCellValueFactory(cellData ->
@@ -118,11 +119,24 @@ public class AddPlayListUserController implements Initializable {
         tracksTableView.setItems(FXCollections.observableArrayList(playListDetailService.findByPlayList(pl)));
     }
 
+    public void refreshData() {
+        User user = userSession.getCurrentUser();
+        if (user != null) {
+            playListTableView.setItems(FXCollections.observableArrayList(
+                    playListService.findByUser(user)
+            ));
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        idPlayList.setCellValueFactory(cellData ->
-                new ReadOnlyObjectWrapper<>(cellData.getValue().getId()));
-
+        User user = userSession.getCurrentUser();
+        if (user == null) {
+            System.out.println("User not found in session!");
+        } else {
+            playListTableView.setItems(FXCollections.observableArrayList(
+                    playListService.findByUser(user)
+            ));
+        }
         playListName.setCellValueFactory(cellData ->
                 new ReadOnlyStringWrapper(cellData.getValue().getTitle()));
         songChoiceBox.setItems(FXCollections.observableArrayList(trackService.loadTracksFromDb()));
@@ -141,12 +155,7 @@ public class AddPlayListUserController implements Initializable {
                         .orElse(null);
             }
         });
-        System.out.println("gettUser "+gettUser());
-        if (user == null) {
-            System.out.println("User is null in AddPlayListUserController");
-        } else {
-            playListTableView.setItems(FXCollections.observableArrayList(playListService.findByUser(user)));
-        }
+
     }
     @FXML
     void addPlayList(ActionEvent event) {
@@ -156,16 +165,19 @@ public class AddPlayListUserController implements Initializable {
             return;
         }
 
-        if (playListService.existsByTitle(title)) {
-            showAlert("Ошибка", "Плейлист с таким названием уже существует");
+        User currentUser = userSession.getCurrentUser();
+
+        if (playListService.existsByTitleAndUser(title, currentUser)) {
+            showAlert("Ошибка", "У вас уже есть плейлист с таким названием");
             return;
         }
 
         PlayList playListt = new PlayList();
         playListt.setTitle(title);
-        playListt.setUser(user);
+        playListt.setUser(currentUser);
         playListService.save(playListt);
-        playListTableView.setItems(FXCollections.observableArrayList(playListService.findByUser(gettUser())));
+
+        playListTableView.setItems(FXCollections.observableArrayList(playListService.findByUser(currentUser)));
     }
 
     @FXML
@@ -199,7 +211,7 @@ public class AddPlayListUserController implements Initializable {
     void deletePlayList(ActionEvent event) {
         PlayList pl = playListTableView.getSelectionModel().getSelectedItem();
         playListService.delete(pl);
-        playListTableView.setItems(FXCollections.observableArrayList(playListService.findByUser(gettUser())));
+        playListTableView.setItems(FXCollections.observableArrayList(playListService.findByUser(userSession.getUser())));
     }
 
     @FXML
@@ -220,12 +232,8 @@ public class AddPlayListUserController implements Initializable {
         alert.showAndWait();
     }
 
-    public void settUser(User user) {
+    public void setUser(User user) {
         this.user = user;
-        System.out.println("settUser "+gettUser());
     }
 
-    public User gettUser(){
-        return this.user;
-    }
 }

@@ -26,6 +26,7 @@ import org.springframework.stereotype.Component;
 import javax.swing.*;
 import java.io.File;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 @FxmlView("/fxml/admin.fxml")
@@ -93,6 +94,9 @@ public class AdminController implements Initializable {
 
     @FXML
     private Button updateTrack;
+
+    @FXML
+    private TextField searchField;
 
     private MediaPlayer mediaPlayer;
 
@@ -209,6 +213,26 @@ public class AdminController implements Initializable {
                 playListTableView.getItems().clear();
             }
         });
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> filterTracks());
+    }
+
+    private void filterTracks() {
+        String searchText = searchField.getText().toLowerCase().trim();
+
+        List<Track> allTracks = trackService.loadTracksFromDb();
+
+        List<Track> filteredTracks = allTracks.stream()
+                .filter(track -> {
+                    if (searchText.isEmpty()) {
+                        return true;
+                    }
+                    return track.getName().toLowerCase().contains(searchText) ||
+                            track.getSinger().getSingername().toLowerCase().contains(searchText) ||
+                            track.getGenre().getName().toLowerCase().contains(searchText);
+                })
+                .toList();
+
+        tracks.setItems(FXCollections.observableArrayList(filteredTracks));
     }
 
     public void settUser(User user) {

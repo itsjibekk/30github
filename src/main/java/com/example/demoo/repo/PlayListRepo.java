@@ -17,4 +17,5 @@ public interface PlayListRepo extends JpaRepository<PlayList, Long> {
     @Query(value = "SELECT * FROM playlist WHERE userid = :userId", nativeQuery = true)
     List<PlayList> findByUserId(@Param("userId") Long userId);
 
+    boolean existsByTitleAndUser(String title, User currentUser);
 }

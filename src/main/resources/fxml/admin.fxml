@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -70,21 +71,22 @@
                <font>
                   <Font size="11.0" />
                </font></Button>
-            <Button fx:id="play" layoutX="668.0" layoutY="5.0" mnemonicParsing="false" onAction="#playMusic" prefHeight="35.0" prefWidth="70.0" style="-fx-border-color: #f6b2ff; -fx-background-color: #ffff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Play">
+            <Button fx:id="play" layoutX="838.0" layoutY="5.0" mnemonicParsing="false" onAction="#playMusic" prefHeight="35.0" prefWidth="70.0" style="-fx-border-color: #f6b2ff; -fx-background-color: #ffff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Play">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="stop" layoutX="595.0" layoutY="5.0" mnemonicParsing="false" onAction="#stopMusic" prefHeight="35.0" prefWidth="70.0" style="-fx-background-color: #ffff; -fx-border-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Stop">
+            <Button fx:id="stop" layoutX="765.0" layoutY="5.0" mnemonicParsing="false" onAction="#stopMusic" prefHeight="35.0" prefWidth="70.0" style="-fx-background-color: #ffff; -fx-border-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Stop">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Label fx:id="adminName" layoutX="116.0" layoutY="11.0" prefHeight="23.0" prefWidth="122.0" text="User">
+            <Label fx:id="adminName" layoutX="116.0" layoutY="11.0" prefHeight="23.0" prefWidth="122.0" text="Admin">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
+            <TextField fx:id="searchField" layoutX="502.0" layoutY="10.0" prefHeight="26.0" prefWidth="240.0" promptText="поиск" />
          </children>
       </AnchorPane>
    </children>

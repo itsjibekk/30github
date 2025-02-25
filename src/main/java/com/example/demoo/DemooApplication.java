@@ -3,6 +3,7 @@ package com.example.demoo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import javafx.application.Application;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 public class DemooApplication {

@@ -36,4 +36,7 @@ public class PlayListService {
         return playListRepo.findByUserId(user.getId());
     }
 
+    public boolean existsByTitleAndUser(String title, User currentUser) {
+        return playListRepo.existsByTitleAndUser(title,currentUser);
+    }
 }

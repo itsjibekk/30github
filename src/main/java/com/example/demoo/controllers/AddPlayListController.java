@@ -4,6 +4,7 @@ import com.example.demoo.dto.TrackDto;
 import com.example.demoo.models.PlayList;
 import com.example.demoo.models.PlayListDetail;
 import com.example.demoo.models.Track;
+import com.example.demoo.models.User;
 import com.example.demoo.services.*;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 @FxmlView("/fxml/addPlayList.fxml")
@@ -43,9 +45,14 @@ public class AddPlayListController implements Initializable {
     private TableColumn<PlayList, Long> idPlayList;
     @FXML
     private TableColumn<PlayList, String> playListName;
+    @FXML
+    private TableColumn<PlayList, String> playListUser;
 
     @FXML
     private TableColumn<TrackDto, Long> idTrack;
+
+    @FXML
+    private TextField searchField;
     @FXML
     private TableColumn<TrackDto, String> trackGenre;
 
@@ -120,7 +127,11 @@ public class AddPlayListController implements Initializable {
 
         playListName.setCellValueFactory(cellData ->
                 new ReadOnlyStringWrapper(cellData.getValue().getTitle()));
+        playListUser.setCellValueFactory(cellData ->
+                new ReadOnlyStringWrapper(cellData.getValue().getUser().getUsername()));
+
         songChoiceBox.setItems(FXCollections.observableArrayList(trackService.loadTracksFromDb()));
+
 
         songChoiceBox.setConverter(new StringConverter<Track>() {
             @Override
@@ -137,7 +148,28 @@ public class AddPlayListController implements Initializable {
             }
         });
         playListTableView.setItems(FXCollections.observableArrayList(playListService.loadAll()));
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> filterTracks());
     }
+
+    private void filterTracks() {
+        String searchText = searchField.getText().toLowerCase().trim();
+
+        List<PlayList> allPlayLists = playListService.loadAll();
+
+        List<PlayList> filteredPlayLists = allPlayLists.stream()
+                .filter(playList -> {
+                    if (searchText.isEmpty()) {
+                        return true;
+                    }
+                    return playList.getTitle().toLowerCase().contains(searchText) ||
+                            playList.getUser().getUsername().toLowerCase().contains(searchText);
+                })
+                .toList();
+
+        playListTableView.setItems(FXCollections.observableArrayList(filteredPlayLists));
+    }
+
+
     @FXML
     void addPlayList(ActionEvent event) {
         String title = playList.getText().trim();
@@ -146,15 +178,20 @@ public class AddPlayListController implements Initializable {
             return;
         }
 
-        if (playListService.existsByTitle(title)) {
-            showAlert("Ошибка", "Плейлист с таким названием уже существует");
+        User currentUser = userService.getByUsername("admin"); // Получаем текущего пользователя
+
+        // Проверяем, есть ли у этого пользователя плейлист с таким же названием
+        if (playListService.existsByTitleAndUser(title, currentUser)) {
+            showAlert("Ошибка", "У вас уже есть плейлист с таким названием");
             return;
         }
 
         PlayList playListt = new PlayList();
         playListt.setTitle(title);
-        playListt.setUser(userService.getByUsername("admin"));
+        playListt.setUser(currentUser);
         playListService.save(playListt);
+
+        // Обновляем таблицу
         playListTableView.setItems(FXCollections.observableArrayList(playListService.loadAll()));
     }
 

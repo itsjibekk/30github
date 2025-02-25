@@ -19,10 +19,9 @@
                   <Font name="System Bold" size="21.0" />
                </font>
             </Label>
-            <TableView fx:id="playListTableView" layoutX="492.0" layoutY="22.0" prefHeight="227.0" prefWidth="241.0">
+            <TableView fx:id="playListTableView" layoutX="492.0" layoutY="22.0" prefHeight="227.0" prefWidth="334.0">
               <columns>
-                <TableColumn fx:id="idPlayList" prefWidth="61.0579833984375" text="ID" />
-                <TableColumn fx:id="playListName" prefWidth="178.9420166015625" text="Плейлист" />
+                <TableColumn fx:id="playListName" prefWidth="333.0" text="Плейлист" />
               </columns>
             </TableView>
             <TableView fx:id="tracksTableView" layoutX="492.0" layoutY="309.0" prefHeight="276.0" prefWidth="334.0">
