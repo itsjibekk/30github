@@ -134,6 +134,10 @@ public class UserController implements Initializable{
     @Autowired
     private GenreService genreService;
 
+    @Autowired
+    private UserSession userSession; // Внедряем сессию
+
+
     @FXML
     void addTrack(ActionEvent event) {
         fxmlSceneManager.switchScene("/fxml/addTrackUser.fxml");
@@ -182,6 +186,12 @@ public class UserController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        user = userSession.getUser(); // Получение текущего пользователя
+        if (user != null) {
+            adminName.setText(user.getUsername()); // Устанавливаем имя пользователя
+        } else {
+            System.out.println("Ошибка: пользователь не найден в сессии.");
+        }
         trackName.setCellValueFactory(cellData ->
                 new ReadOnlyStringWrapper(cellData.getValue().getName()));
 
@@ -255,11 +265,10 @@ public class UserController implements Initializable{
         searchFieldA.textProperty().addListener((observable, oldValue, newValue) -> filterArtists());
     }
 
+
     @FXML
-    public void addPlaylist(){
-        fxmlSceneManager.switchSceneWithController("/fxml/addPlayListUser.fxml", AddPlayListUserController.class, controller -> {
-            controller.settUser(user);
-        });
+    void addPlaylist() {
+        fxmlSceneManager.switchhSceneWithController("/fxml/addPlayListUser.fxml", AddPlayListUserController.class);
     }
     @FXML
     public void showTrackss(){
@@ -287,41 +296,28 @@ public class UserController implements Initializable{
 
     private void filterTracks() {
         String searchText = searchField.getText().toLowerCase().trim();
-        String filterType = choiceBox.getValue(); // Берем текущий фильтр из choiceBox
 
-        // Получаем все треки из базы
         List<Track> allTracks = trackService.loadTracksFromDb();
 
-        // Фильтруем по критерию
         List<Track> filteredTracks = allTracks.stream()
                 .filter(track -> {
                     if (searchText.isEmpty()) {
-                        return true; // Если поле пустое, показываем все треки
+                        return true;
                     }
-                    switch (filterType) {
-                        case "Трек":
-                            return track.getName().toLowerCase().startsWith(searchText);
-                        case "Исполнитель":
-                            return track.getSinger().getSingername().toLowerCase().startsWith(searchText);
-                        case "Жанр":
-                            return track.getGenre().getName().toLowerCase().startsWith(searchText);
-                        default:
-                            return false;
-                    }
+                    return track.getName().toLowerCase().contains(searchText) ||
+                            track.getSinger().getSingername().toLowerCase().contains(searchText) ||
+                            track.getGenre().getName().toLowerCase().contains(searchText);
                 })
                 .toList();
 
-        // Обновляем таблицу
         tracksTB.setItems(FXCollections.observableArrayList(filteredTracks));
     }
-
 
     private void deleteMusic() {
         Track track = tracksTB.getSelectionModel().getSelectedItem();
         trackService.delete(track);
         tracksTB.setItems(FXCollections.observableArrayList(trackService.loadTracksFromDb()));
     }
-
 
     public void playMusic() {
         // Stop any currently playing track before starting a new one
@@ -355,7 +351,8 @@ public class UserController implements Initializable{
 
     public void settUser(User user) {
         this.user = user;
-        adminName.setText(user.getUsername() + user.getId());
+        userSession.setCurrentUser(user);
+        adminName.setText(user.getUsername());
         playlistsTB.setItems(FXCollections.observableArrayList(playListService.findByUser(user)));
     }
 

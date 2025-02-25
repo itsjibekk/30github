@@ -19,13 +19,14 @@
                   <Font name="System Bold" size="21.0" />
                </font>
             </Label>
-            <TableView fx:id="playListTableView" layoutX="492.0" layoutY="22.0" prefHeight="227.0" prefWidth="241.0">
+            <TableView fx:id="playListTableView" layoutX="438.0" layoutY="51.0" prefHeight="273.0" prefWidth="438.0">
               <columns>
                 <TableColumn fx:id="idPlayList" prefWidth="61.0579833984375" text="ID" />
-                <TableColumn fx:id="playListName" prefWidth="178.9420166015625" text="Плейлист" />
+                <TableColumn fx:id="playListName" prefWidth="256.5" text="Плейлист" />
+                  <TableColumn fx:id="playListUser" prefWidth="119.00006103515625" text="Пользователь" />
               </columns>
             </TableView>
-            <TableView fx:id="tracksTableView" layoutX="492.0" layoutY="309.0" prefHeight="276.0" prefWidth="334.0">
+            <TableView fx:id="tracksTableView" layoutX="492.0" layoutY="372.0" prefHeight="213.0" prefWidth="336.0">
               <columns>
                 <TableColumn fx:id="idTrack" prefWidth="33.459747314453125" text="ID" />
                 <TableColumn fx:id="trackName" prefWidth="112.25442504882812" text="Песня" />
@@ -33,7 +34,7 @@
                   <TableColumn fx:id="trackGenre" prefWidth="72.5" text="Жанр" />
               </columns>
             </TableView>
-            <Button fx:id="showPlayList" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="406.0" layoutY="114.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showPlayList" prefHeight="36.0" prefWidth="52.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="=&gt;" textAlignment="CENTER">
+            <Button fx:id="showPlayList" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="366.0" layoutY="114.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showPlayList" prefHeight="36.0" prefWidth="52.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="=&gt;" textAlignment="CENTER">
                <font>
                   <Font size="19.0" />
                </font>
@@ -44,7 +45,7 @@
                </font>
             </Label>
             <TextField fx:id="playList" layoutX="140.0" layoutY="110.0" prefHeight="26.0" prefWidth="197.0" />
-            <Button fx:id="showTracksInPl" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="759.0" layoutY="253.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showTracks" prefHeight="30.0" prefWidth="52.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="⬇" textAlignment="CENTER">
+            <Button fx:id="showTracksInPl" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="779.0" layoutY="333.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showTracks" prefHeight="30.0" prefWidth="52.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="⬇" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -75,11 +76,12 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="deletePlayList" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="598.0" layoutY="253.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#deletePlayList" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Удалить плейлист" textAlignment="CENTER">
+            <Button fx:id="deletePlayList" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="618.0" layoutY="333.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#deletePlayList" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #f6b2ff;" styleClass="glow-button" stylesheets="@../css/styles.css" text="Удалить плейлист" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
+            <TextField fx:id="searchField" layoutX="628.0" layoutY="12.0" prefHeight="26.0" prefWidth="243.0" promptText="поиск" />
          </children>
       </AnchorPane>
    </children>

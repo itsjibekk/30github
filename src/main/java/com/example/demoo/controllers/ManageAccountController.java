@@ -20,7 +20,6 @@ import org.springframework.stereotype.Component;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.example.demoo.controllers.AddPlayListUserController.user;
 
 @Component
 @FxmlView("/fxml/manageAccount.fxml")

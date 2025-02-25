@@ -42,6 +42,25 @@ public class FXMLSceneManager {
         }
     }
 
+    public <T> void switchhSceneWithController(String fxmlPath, Class<T> controllerClass)  {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setControllerFactory(context::getBean);
+        loader.setLocation(getClass().getResource(fxmlPath));
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        T controller = loader.getController();
+
+        if (controller instanceof AddPlayListUserController) {
+            ((AddPlayListUserController) controller).refreshData();
+        }
+    }
+
     public <T> void switchSceneWithController(String fxmlPath, Class<T> controllerClass, ControllerInitializer<T> initializer) {
         if (primaryStage == null) {
             System.out.println("Error: primaryStage is null!");
