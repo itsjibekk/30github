@@ -17,6 +17,6 @@ public class BinarySum {
     }
 
     public static void main(String[] args) {
-        System.out.println(addBinary("1010", "1011")); // Output: "10101"
+        System.out.println(addBinary("1384", "1011")); // Output: "10101"
     }
 }
