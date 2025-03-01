@@ -40,7 +40,7 @@
                   <Font name="Futura Bold" size="21.0" />
                </font>
             </Button>
-            <AnchorPane fx:id="tracks" layoutX="269.0" layoutY="7.0" prefHeight="588.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;">
+            <AnchorPane fx:id="tracks" layoutX="269.0" layoutY="7.0" prefHeight="588.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;" visible="false">
                <children>
                   <TableView fx:id="tracksTB" layoutX="38.0" layoutY="54.0" prefHeight="467.0" prefWidth="563.0">
                     <columns>
@@ -64,7 +64,7 @@
                      </columns>
                   </TableView>
                </children></AnchorPane>
-            <AnchorPane fx:id="playlists" layoutX="269.0" layoutY="7.0" prefHeight="588.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;" visible="false">
+            <AnchorPane fx:id="playlists" layoutX="269.0" layoutY="7.0" prefHeight="588.0" prefWidth="626.0" style="-fx-background-color: #ffff; -fx-background-radius: 15px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);;">
                <children>
                   <TableView fx:id="tracksInPL" layoutX="341.0" layoutY="81.0" prefHeight="310.0" prefWidth="270.0">
                     <columns>
